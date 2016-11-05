@@ -1,0 +1,11 @@
+---
+# confgig commun de tout les hosts
+# pour plus d'infos il faut regarder dans roles/*
+
+- hosts: all
+
+  pre_tasks:
+    - include_vars: ../secured/password.yml
+
+  roles:
+    - commun
