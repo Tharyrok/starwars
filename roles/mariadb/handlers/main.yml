@@ -1,0 +1,10 @@
+---
+
+- name: restart mysql
+  service: name=mysql state=restarted
+
+- name: restart monit
+  service: name=monit state=restarted
+
+- name: restart collectd
+  service: name=collectd state=restarted
