@@ -19,5 +19,4 @@
     - { role: 'user', when: ansible_hostname == 'web' }
     - { role: 'letsencrypt-apps', when: ansible_hostname == 'web' }
     - { role: 'nginx-apps', when: ansible_hostname == 'web' }
-    - { role: 'php5-apps', when: ansible_hostname == 'web' }
-    - { role: 'proftpd-apps', when: ansible_hostname == 'sql' }
+    - { role: 'php7-apps', when: ansible_hostname == 'web' }
