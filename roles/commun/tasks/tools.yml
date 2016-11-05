@@ -8,3 +8,9 @@
     - duplicity
     - duply
     - python-openstackclient
+    - htop
+    - tree
+    - wget
+    - curl
+    - nano
+    - molly-guard

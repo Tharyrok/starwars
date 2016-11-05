@@ -6,6 +6,7 @@
   with_items:
     - zsh
     - python-pygments
+    - safe-rm
 
 - name: Copie des fichier de configuration (zsh)
   copy: src={{ item }} dest=/etc/zsh/{{ item }} owner=root group=root mode="u+rw,g+r,o+r"
