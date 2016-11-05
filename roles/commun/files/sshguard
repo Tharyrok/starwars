@@ -1,4 +1,0 @@
-check process sshguard with pidfile /var/run/sshguard.pid
-  group firewall
-  start program = "/etc/init.d/sshguard start"
-  stop  program = "/etc/init.d/sshguard stop"

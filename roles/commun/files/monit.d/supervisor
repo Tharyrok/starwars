@@ -1,4 +1,0 @@
-check process supervisord with pidfile /var/run/supervisord.pid
-    start program  "/etc/init.d/supervisor start"
-    stop program  "/etc/init.d/supervisor stop"
-    group server

@@ -1,5 +1,4 @@
 ---
-# confgig general de tout les hosts
 
 - name: Installation de netfilter-persistent
   apt: name=netfilter-persistent state=present cache_valid_time=3600

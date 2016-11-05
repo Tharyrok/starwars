@@ -1,5 +1,4 @@
 ---
-# confgig minimal de ssh
 # Attention peut casser la connexion ssh. Penser à avoir un ControlPersist dans .ssh/config
 
 - stat: path=/etc/ssh/ssh_host_dsa_key

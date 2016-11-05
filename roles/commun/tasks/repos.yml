@@ -1,5 +1,4 @@
 ---
-# Copie fichier repos
 
 - name: Copie du source.list
   copy: src=sources.list dest=/etc/apt/sources.list owner=root group=root mode="u+rw,g+r,o+r"
