@@ -1,0 +1,26 @@
+set daemon  30
+with start delay 300
+
+set logfile syslog
+set idfile /var/lib/monit/id
+set statefile /var/lib/monit/state
+
+set eventqueue basedir /var/lib/monit/events slots 100
+
+{% if ansible_fqdn == fqdn_mail %}
+set mailserver 127.0.0.1
+{% else %}
+set mailserver {{ fqdn_mail }} port 587
+{% set key = 'postmaster-' + ansible_hostname + '@tharyrok.eu.org' %}
+    username "postmaster-{{ ansible_hostname }}@tharyrok.eu.org" password "{{ mail_user[key] }}"
+    using tlsv12
+{% endif %}
+
+set alert {{ monitor_mail }} not on { instance, action }
+
+set httpd port 2812
+    allow 127.0.0.1
+    allow 192.168.50.0/24
+
+
+include /etc/monit.d/*

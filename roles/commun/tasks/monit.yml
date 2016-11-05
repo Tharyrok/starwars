@@ -1,0 +1,32 @@
+---
+# tache Installatiuon de monit
+
+- name: Installation de monit
+  apt: name=monit state=present cache_valid_time=3600
+
+- name: Créer repertoire monit
+  file: path=/etc/monit.d/ state=directory owner=root group=root mode="u+rwX,g+rwX,o+r" recurse=yes
+
+- name: Copie des fichier de configuration monit
+  copy: src={{ item }} dest=/etc/{{ item }} owner=root group=root mode="u+rw,g-rwx,o-rwx"
+  with_items:
+    - monit.d/filesystem
+    - monit.d/loadavg
+    - monit.d/supervisor
+    - monit.d/openssh
+  notify:
+    - restart monit
+
+- name: monit config
+  template: src=monitrc.j2 dest=/etc/monit/monitrc owner=root group=root mode="u+rw,g-rwx,o-rwx"
+  notify:
+    - restart monit
+
+- name: Copie des fichier de sshprotect
+  copy: src=monit.d/sshprotect dest=/etc/monit.d/sshprotect owner=root group=root mode="u+rw,g-rwx,o-rwx"
+  when: ansible_hostname not in sshprotect_disable
+  notify:
+    - restart monit
+
+- name: Activer monit au démérage
+  service: name=monit state=started enabled=yes

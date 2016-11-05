@@ -1,0 +1,11 @@
+---
+
+- name: Installation de divers outils
+  apt: name={{ item }} state=present cache_valid_time=3600
+  with_items:
+    - git
+    - unzip
+    - apt-transport-https
+    - duplicity
+    - duply
+    - python-openstackclient

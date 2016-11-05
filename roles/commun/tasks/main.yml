@@ -1,0 +1,18 @@
+---
+# role commun de tout les hosts
+
+- include: repos.yml
+- include: zsh.yml
+- include: users.yml
+- include: openssh.yml
+- include: motd.yml
+- include: munin-node.yml
+- include: ssmtp.yml
+  when: ansible_fqdn != fqdn_mail
+- include: local.yml
+- include: tools.yml
+- include: iptables.yml
+- include: monit.yml
+- include: supervisor.yml
+- include: sshguard.yml
+  when: ansible_hostname not in sshprotect_disable
