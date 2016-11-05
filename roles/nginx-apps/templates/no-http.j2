@@ -1,0 +1,6 @@
+server {
+	listen 80;
+	listen [::]:80;
+	server_name {{ item.key }} www.{{ item.key }};
+	rewrite ^ https://$server_name$request_uri? permanent;
+}

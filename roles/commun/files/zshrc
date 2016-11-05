@@ -20,7 +20,7 @@ alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 
-alisa rm='/usr/bin/safe-rm'
+alias rm='/usr/bin/safe-rm'
 
 # Quelques alias pratiques
 alias c='clear'

@@ -1,0 +1,47 @@
+---
+
+- name: Installation de php5
+  apt: name={{ item }} state=present cache_valid_time=3600
+  with_items:
+    - php5-apcu
+    - php5-cli
+    - php5-curl
+    - php5-enchant
+    - php5-fpm
+    - php5-gd
+    - php5-geoip
+    - php5-gmp
+    - php5-igbinary
+    - php5-imagick
+    - php5-imap
+    - php5-interbase
+    - php5-intl
+    - php5-json
+    - php5-ldap
+    - php5-mcrypt
+    - php5-memcached
+    - php5-mongo
+    - php5-msgpack
+    - php5-mysql
+    - php5-odbc
+    - php5-pgsql
+    - php5-pspell
+    - php5-readline
+    - php5-recode
+    - php5-redis
+    - php5-snmp
+    - php5-sqlite
+    - php5-sybase
+    - php5-tidy
+    - php5-xmlrpc
+    - php5-xsl
+    - snmp-mibs-downloader
+
+- name: php cgi config
+  replace: dest=/etc/php5/fpm/php.ini regexp='^cgi.fix_pathinfo=1$' replace='cgi.fix_pathinfo=0"' backup=no
+
+- name: Supprimer le default pool
+  file: path=/etc/php5/fpm/pool.d/www.conf state=absent
+
+- name: Activer les service au démérage (fpm)
+  service: name=php5-fpm enabled=yes

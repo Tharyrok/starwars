@@ -1,0 +1,12 @@
+---
+
+- name: Créer repertoire domains
+  file: path=/home/letsencrypt/ssl/{{ DOMAIN }} state=directory owner=letsencrypt group=letsencrypt mode="u+rwX,g+rwX,o+r" recurse=yes
+
+- name: Copie des keys
+  copy: src=../secured/ssl/domains/{{ DOMAIN }}/{{ DOMAIN }}.key dest=/home/letsencrypt/ssl/{{ DOMAIN }}/{{ DOMAIN }}.key owner=letsencrypt group=letsencrypt mode="u+r,g+r,o+r"
+  notify: run certificat
+
+- name: Copie des csr
+  copy: src=../secured/ssl/domains/{{ DOMAIN }}/{{ DOMAIN }}.csr dest=/home/letsencrypt/ssl/{{ DOMAIN }}/{{ DOMAIN }}.csr owner=letsencrypt group=letsencrypt mode="u+r,g+r,o-rwx"
+  notify: run certificat

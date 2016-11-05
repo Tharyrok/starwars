@@ -1,0 +1,36 @@
+---
+
+- hosts: all
+  pre_tasks:
+    - include_vars: ../secured/password.yml
+  vars:
+    DOMAIN: forum.imotep-gaming.fr
+    DIR: /var/www/forum.imotep-gaming.fr/
+    LE: true
+    SSL: true
+    SSL_UNIQ: true
+    TECHNO: php
+    PROXY: false
+    PROXY_SSL: false
+    PROXY_IP: false
+
+
+  roles:
+    - { role: 'user', when: ansible_hostname == 'web' }
+    - { role: 'letsencrypt-apps', when: ansible_hostname == 'web' }
+    - { role: 'nginx-apps', when: ansible_hostname == 'web' }
+    - { role: 'php5-apps', when: ansible_hostname == 'web' }
+
+  tasks:
+    - name: create database imotep
+      mysql_db: name=imotep state=present login_user=root login_password={{ MYSQL_ROOT }}
+      when: ansible_hostname == 'sql'
+
+    - name: create user mail mysql for lan
+      mysql_user: name=imotep password={{ MYSQL_IMOTEP }} priv=imotep.*:ALL host={{ item }} state=present login_user=root login_password={{ MYSQL_ROOT }}
+      with_items:
+        - "127.0.0.1"
+        - "localhost"
+        - "192.168.70.%"
+        - "sql.r2-d2.tharyrok.eu.org"
+      when: ansible_hostname == 'sql'
