@@ -35,25 +35,6 @@
     - error/-error-404.html
     - error/-error-50x.html
 
-- name: téléchargement plugin munin
-  get_url: url=https://raw.githubusercontent.com/perusio/nginx-munin/master/{{ item }} dest=/usr/share/munin/plugins/{{ item }} mode="u+rwx,g+rx,o+rx" force=yes
-  with_items:
-    - nginx_connection_request
-    - nginx_memory
-    - nginx_request
-    - nginx_status
-
-- name: Lien symbolique munin
-  file: src=/usr/share/munin/plugins/{{ item }} dest=/etc/munin/plugins/{{ item }} owner=munin group=munin state=link
-  with_items:
-    - nginx_connection_request
-    - nginx_memory
-    - nginx_request
-    - nginx_status
-
-- name: Copie des fichier de nginx pour munin
-  copy: src=munin dest=/etc/munin/plugin-conf.d/nginx owner=munin group=munin mode="u+rw,g+r,o+r"
-
 - name: Création reprtoir pour le script de ban
   file: path=/opt/tharyrok/stopforumspam state=directory owner=root group=root mode="u+rwX,g+rwX,o+r" recurse=yes
   when: ansible_hostname in spam_nginx
@@ -68,5 +49,4 @@
 - name: Activer le service nginx au démérage
   service: name={{ item }} state=restarted enabled=yes
   with_items:
-    - munin-node
     - nginx
