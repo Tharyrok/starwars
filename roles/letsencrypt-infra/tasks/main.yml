@@ -19,7 +19,7 @@
 - name: Copie des fichier acme_tiny
   copy: src=le-cron.sh dest=/home/letsencrypt/le-cron.sh owner=letsencrypt group=letsencrypt mode="u+rx,g-rwx,o-rwx"
 
-- name: téléchargement plugin munin
+- name: téléchargement acme_tiny
   get_url: url=https://raw.githubusercontent.com/diafygi/acme-tiny/master/acme_tiny.py dest=/home/letsencrypt/acme_tiny.py owner=letsencrypt group=letsencrypt mode="u+rx,g-rwx,o-rwx" force=yes
 
 - name: Copie des fichier letsencrypt.key
