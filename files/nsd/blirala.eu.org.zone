@@ -1,0 +1,26 @@
+blirala.eu.org.					86400	SOA		ns-charlie.tharyrok.eu.org. postmaster.tharyrok.eu.org. (
+									2016100502   ; serial YYYYMMDDnn
+									3600         ; refresh (   1 hours)
+									7200         ; retry   (   2 hours)
+									1209600      ; expire  (  14 days )
+									3600 )       ; minimum (   1 hours)
+
+blirala.eu.org.					84600	NS		ns-bravo.tharyrok.eu.org.
+blirala.eu.org.					84600	NS		ns-charlie.tharyrok.eu.org.
+blirala.eu.org.					84600	NS		ns-delta.tharyrok.eu.org.
+blirala.eu.org.					84600	NS		ns-echo.tharyrok.eu.org.
+blirala.eu.org.					84600	NS		ns-foxtrot.tharyrok.eu.org.
+blirala.eu.org.					84600	NS		ns-golf.tharyrok.eu.org.
+blirala.eu.org.					84600	NS		ns-hotel.tharyrok.eu.org.
+blirala.eu.org.					84600	NS		ns-india.tharyrok.eu.org.
+
+blirala.eu.org.					84600	MX	10	smtp.tharyrok.eu.org.
+blirala.eu.org.					84600	A		62.210.100.21
+www.blirala.eu.org.				84600	A		62.210.100.21
+
+k1._domainkey.blirala.eu.org.	84600	TXT		"k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDPwHkJTPrJ0YMkYQ7q+9So9+Aa7T8eCZBqZd/unICjTJw5tL5BACsD7arolkl4PlHwX3/i+pPqUCnjbbGIsW6nBqJy6eULxeVSZXVhaeDLzwcR5M8D++4EAB4qMTcW95uG5sLS5OWYO6rK2m+QMVy0mBHLVcLRJD6dm6STNcsiQwIDAQAB"
+blirala.eu.org.					84600	TXT		"v=spf1 include:tharyrok.eu.org -all"
+
+mail._domainkey.blirala.eu.org.	84600	TXT	( "v=DKIM1; k=rsa; "
+	  "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0eSiuoSOiQXyLGG9qrT5hhrI9tVMjayLBEjVCpN23gLHEH/Jb9z+GupQ2wQEvRrFMOoD1Ev2OnzixP3dF2YTWEVaX4iNof6SMHhFnCvGM8GuW0FA2z4XE2MsqNge1NLYxLeP3AvtSaF7ZfjjUIVFZ4gXpZjQBrHna6DnZJk+8FvDtMgYjPK54yXdM86mTe0EEIb16Rg/TzpwMI"
+	  "In8kOON0adnBcwXDMkbGJe4XlJ8IjGohqM+DRnhW46vr8Q3WebtPUT7UcI5LVCHtB/fTX0PAGgdrZKNIr48KMidE6zltUjAJqaKsaQNyBwdm4s0SiNyaszlfp7AND6vLzS3l5F5wIDAQAB" )

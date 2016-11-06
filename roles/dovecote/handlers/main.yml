@@ -1,0 +1,13 @@
+---
+
+- name: restart monit
+  service: name=monit state=restarted
+
+- name: restart sshd
+  service: name=sshd state=restarted
+
+- name: restart collectd
+  service: name=collectd state=restarted
+
+- name: restart dovecot
+  service: name=dovecot state=restarted

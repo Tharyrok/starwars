@@ -1,0 +1,69 @@
+server {
+	listen 80;
+
+	root /var/www/torrent;
+
+	server_name torrent.tharyrok.eu.org;
+
+	access_log /var/log/nginx/torrent-access.log;
+	error_log /var/log/nginx/torrent-error.log;
+
+	auth_basic "seedbox";
+	auth_basic_user_file "/etc/nginx/passwd/torrent_passwd";
+
+	location / {
+		try_files $uri $uri/ /index.php;
+	}
+
+	location ~ \.php$ {
+		try_files $uri =404;
+		fastcgi_pass unix:/run/php-www.sock;
+		fastcgi_index index.php;
+		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		include fastcgi_params;
+	}
+
+	location = /favicon.ico {
+		log_not_found off;
+		access_log off;
+	}
+
+	location = /robots.txt {
+		allow all;
+		log_not_found off;
+		access_log off;
+	}
+
+	location ~* ^.+.(jpg|jpeg|gif|png|ico|css|zip|tgz|gz|rar|bz2|doc|xls|exe|pdf|ppt|txt|tar|mid|midi|wav|bmp|rtf|js)$ {
+		expires 7d;
+		log_not_found off;
+		access_log off;
+	}
+	location ~ /\. {
+		deny all;
+		access_log off;
+		log_not_found off;
+	}
+
+
+	location ^~ /conf/ {
+		deny all;
+	}
+
+	location ^~ /share/ {
+		deny all;
+	}
+
+	location /tharyrok {
+		include scgi_params;
+		scgi_pass 127.0.0.1:5001;
+		auth_basic "seedbox";
+		auth_basic_user_file "/etc/nginx/passwd/torrent_passwd_tharyrok";
+	}
+
+	location = /-error-50x.html { root /var/www/error/; }
+	location = /-error-404.html { root /var/www/error/; }
+	error_page 404             /-error-404.html;
+	error_page 500 502 503 504 /-error-50x.html;
+
+}

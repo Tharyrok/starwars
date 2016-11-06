@@ -1,0 +1,27 @@
+assalyzo.eu.				86400	SOA		ns-charlie.tharyrok.eu.org. postmaster.tharyrok.eu.org. (
+									2016100502   ; serial YYYYMMDDnn
+									3600         ; refresh (   1 hours)
+									7200         ; retry   (   2 hours)
+									1209600      ; expire  (  14 days )
+									3600 )       ; minimum (   1 hours
+
+assalyzo.eu.				84600	NS		ns-bravo.tharyrok.eu.org.
+assalyzo.eu.				84600	NS		ns-charlie.tharyrok.eu.org.
+assalyzo.eu.				84600	NS		ns-delta.tharyrok.eu.org.
+assalyzo.eu.				84600	NS		ns-echo.tharyrok.eu.org.
+assalyzo.eu.				84600	NS		ns-foxtrot.tharyrok.eu.org.
+assalyzo.eu.				84600	NS		ns-golf.tharyrok.eu.org.
+assalyzo.eu.				84600	NS		ns-hotel.tharyrok.eu.org.
+assalyzo.eu.				84600	NS		ns-india.tharyrok.eu.org.
+
+assalyzo.eu.				84600	MX	10	smtp.tharyrok.eu.org.
+web.assalyzo.eu.			84600	MX	10	smtp.tharyrok.eu.org.
+assalyzo.eu.				84600	A		62.210.100.21
+www.assalyzo.eu.			84600	A		62.210.100.21
+web.assalyzo.eu.			84600	A		62.210.100.21
+
+assalyzo.eu.				84600	TXT		"v=spf1 include:tharyrok.eu.org -all"
+
+mail._domainkey.assalyzo.eu.	84600	TXT	( "v=DKIM1; k=rsa; "
+	  "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxH0J+rx8MP2qztEyuTlAfjOM+uuHN62juzqvP3g51TyIlNo1NPSQl2H+DyJXy8HY1Jx34WOyhniUTmM7gL5Y50n7PPhmI/z7gSj2DyF/rGl3uOjIQzy5xFT5fFkqJHjS9iuqC7diBQDQtDuwUqVfxemiRAyxBm1seJTOQ1/1jDTaMpruBYW49h0OgCQEz2XE5uPr3WPNaYekZm"
+	  "EUHno8ysxJerH34PYmUHIZSZas/JUg9LSjeGVZX/Gc5HngmEcd+oDSyXPSzq8oaSJa54mdTOgcPXcyJa9PSH/2qJQUsUCrCg3N+1pZ/gb8j33nY5Ax0ZS99aZM9VCv+wliCEwHsQIDAQAB" )

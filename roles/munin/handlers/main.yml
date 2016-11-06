@@ -1,0 +1,4 @@
+---
+
+- name: restart rrdcached
+  service: name=rrdcached state=restarted

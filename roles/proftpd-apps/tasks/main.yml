@@ -1,0 +1,8 @@
+---
+
+- name: copy fille import database mail
+  template: src=proftpd.j2 dest=/tmp/proftpd.sql owner=root group=root mode="u+rw,g+r,o+r"
+
+- name: import database ftp
+  mysql_db: name=ftpd state=import target=/tmp/proftpd.sql login_user=root login_password={{ MYSQL_ROOT }}
+

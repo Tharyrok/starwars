@@ -1,0 +1,13 @@
+{% for d in ftp_user[DOMAIN] %}
+INSERT INTO `ftpd`.`ftpuser`(`userid`, `passwd` , `uid`, `gid`, `homedir`)
+SELECT * FROM (SELECT '{{ DOMAIN | replace(".", "-") }}-{{ d.user }}' AS userid, SHA2('{{ d.pass }}',256) AS passwd, '{{ web_id[DOMAIN] }}' AS uid, '{{ web_id[DOMAIN] }}' AS gid, '{{ DIR }}' AS homedir) AS tmp
+WHERE NOT EXISTS (
+    SELECT userid FROM `ftpd`.`ftpuser` WHERE userid = '{{ DOMAIN | replace(".", "-") }}-{{ d.user }}'
+) LIMIT 1;
+
+INSERT INTO `ftpd`.`ftpgroup`(`groupname`, `gid` , `members`)
+SELECT * FROM (SELECT '{{ DOMAIN | replace(".", "-") }}-{{ d.user }}' AS groupname, '{{ web_id[DOMAIN] }}' AS gid, '{{ DOMAIN | replace(".", "-") }}-{{ d.user }}' AS members) AS tmp
+WHERE NOT EXISTS (
+    SELECT groupname FROM `ftpd`.`ftpgroup` WHERE groupname = '{{ DOMAIN | replace(".", "-") }}-{{ d.user }}'
+) LIMIT 1;
+{% endfor %}

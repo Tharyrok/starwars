@@ -1,0 +1,50 @@
+---
+
+- name: Installation de dovecot
+  apt: name={{ item }} state=present cache_valid_time=3600
+  with_items:
+    - dovecot-core
+    - dovecot-imapd
+    - dovecot-lmtpd
+    - dovecot-mysql
+    - dovecot-sieve
+    - dovecot-managesieved
+
+- name: Copie des fichier de configuration dovecot
+  copy: src={{ item }} dest=/etc/dovecot/conf.d/{{ item }} owner=root group=root mode="u+r,g-rwx,o-rwx"
+  with_items:
+    - 10-auth.conf
+    - 10-mail.conf
+    - 10-master.conf
+    - 10-ssl.conf
+    - 20-lmtp.conf
+    - 20-managesieve.conf
+    - 90-sieve.conf
+    - 90-plugin.conf
+    - auth-sql.conf.ext
+  notify:
+    - restart dovecot
+
+- name: Copie des fichier de configuration dovecot
+  copy: src=dovecot.conf dest=/etc/dovecot/dovecot.conf owner=root group=dovecot mode="u+r,g-rwx,o-rwx"
+  notify:
+    - restart dovecot
+
+- name: Copie du fichier
+  template: src=dovecot-sql.j2 dest=/etc/dovecot/dovecot-sql.conf.ext owner=root group=dovecot mode="u+rw,g+r,o+r"
+  notify:
+    - restart dovecot
+
+- name: Créer repertoire sieve
+  file: path=/var/lib/dovecot/sieve state=directory owner=dovecot group=dovecot mode="u+rwX,g+rwX,o+r" recurse=yes
+
+- name: Copie des fichier de configuration dovecot
+  copy: src=default.sieve dest=/var/lib/dovecot/sieve/default.sieve owner=dovecot group=dovecot mode="u+rx,g+x,o+x"
+
+- name: Activer dovecot au démérage
+  service: name=dovecot state=started enabled=yes
+
+- name: Copie des fichier de configuration dovecot
+  copy: src=dovecot dest=/etc/monit.d/dovecot owner=root group=root mode="u+r,g-rwx,o-rwx"
+  notify:
+    - restart monit

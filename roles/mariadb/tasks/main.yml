@@ -54,3 +54,8 @@
   copy: src=my.cnf dest=/etc/mysql/my.cnf owner=root group=root mode="u+rw,g+r,o+r"
   notify:
     - restart mysql
+
+- name: Copie des fichier de configuration monit
+  copy: src=mariadb dest=/etc/monit.d/mariadb owner=root group=root mode="u+r,g-rwx,o-rwx"
+  notify:
+    - restart monit

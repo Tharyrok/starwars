@@ -1,0 +1,30 @@
+lirarice.ovh.						86400	SOA		ns-charlie.tharyrok.eu.org. postmaster.tharyrok.eu.org. (
+										2016100502   ; serial YYYYMMDDnn
+										3600         ; refresh (   1 hours)
+										7200         ; retry   (   2 hours)
+										1209600      ; expire  (  14 days )
+										3600 )       ; minimum (   1 hours
+
+lirarice.ovh.						84600	NS		ns-bravo.tharyrok.eu.org.
+lirarice.ovh.						84600	NS		ns-charlie.tharyrok.eu.org.
+lirarice.ovh.						84600	NS		ns-delta.tharyrok.eu.org.
+lirarice.ovh.						84600	NS		ns-echo.tharyrok.eu.org.
+lirarice.ovh.						84600	NS		ns-foxtrot.tharyrok.eu.org.
+lirarice.ovh.						84600	NS		ns-golf.tharyrok.eu.org.
+lirarice.ovh.						84600	NS		ns-hotel.tharyrok.eu.org.
+lirarice.ovh.						84600	NS		ns-india.tharyrok.eu.org.
+
+lirarice.ovh.						84600	MX	10	smtp.tharyrok.eu.org.
+lirarice.ovh.						3600	A		62.210.100.21
+www.lirarice.ovh.					3600	A		62.210.100.21
+mc.lirarice.ovh.					3600	A		195.154.255.6
+ts.lirarice.ovh.					3600	A		188.213.25.221
+ts.lirarice.ovh.					3600	AAAA	2a03:75c0:23:28be::1
+map.lirarice.ovh.					3600	A		62.210.100.21
+
+lirarice.ovh.						84600	TXT		"v=spf1 include:tharyrok.eu.org include:sparkpostmail.com -all"
+scph0816._domainkey.lirarice.ovh.	84600	TXT		"v=DKIM1; k=rsa; h=sha256; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDgIW5g3Em4lWd3GDmCEUFjGS5TOuSjHmZOzR40wlHpFvjzIKUYIrL8764ALRiaolvgIIa5bjvzpoHgvGnUVbUOjVePhHSdKkPsCDwp2h0cjdPr7JWF0j72qLq9gfCC+rAU5QsJB/BikF7cxEoyqi4vj/+k0Gr9EQMZUdkufGlLfQIDAQAB"
+
+mail._domainkey.lirarice.ovh.	84600	TXT	( "v=DKIM1; k=rsa; "
+	  "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm4oO4s/yBEtNfkz2QwA3QkePw/SuefSKP4rYleqJ7BEgT1jbYH1vEkpJqztwW7sR1pCeUev6Y2OTP6hNbzQ2c94itATYaE3JxyCD5GwshQ13kJ+xpNJ5Mmaz45o7F4cehOOFTVXMYMjXGECnmxUoC0tXRI/DtcN+7e5CkRj3PcH4k0SWWb29JFcxxzb2kX1tnuE48N/l30EJyn"
+	  "Rzy3Vl6ch4TIf3fQMnK+34Nn9SB0AwEocwrp83xO3d9AG31JZRKHTj8M9kVsmsGzqzJNw85K1Nzi4bTGX+OPIVyV7NbL/UV/Lk8c7STNNJwy0LKVzu0hHvpuFuh3MG8DwgNO6GtQIDAQAB" )
