@@ -1,0 +1,49 @@
+---
+
+- hosts: all
+  pre_tasks:
+    - include_vars: ../secured/password.yml
+  vars:
+    domain:
+      - assalyzo.eu.org
+      - assalyzo.eu
+      - blirala.eu.org
+      - blirala.eu
+      - lirarice.eu.org
+      - lirarice.ovh
+      - tharyrok.eu.org
+      - tharyrok.eu
+      - tmin.eu
+
+    hostname:
+      - c-3po.tharyrok.eu.org
+      - r2-d2.tharyrok.eu.org
+      - azi-3.tharyrok.eu.org
+      - dns.r2-d2.tharyrok.eu.org
+      - mail.r2-d2.tharyrok.eu.org
+      - minecraft.r2-d2.tharyrok.eu.org
+      - misc.r2-d2.tharyrok.eu.org
+      - music.r2-d2.tharyrok.eu.org
+      - plex.r2-d2.tharyrok.eu.org
+      - sql.r2-d2.tharyrok.eu.org
+      - torrent.r2-d2.tharyrok.eu.org
+      - web.r2-d2.tharyrok.eu.org
+
+    postmaster:
+      - assalyzo.eu.org
+      - assalyzo.eu
+      - blirala.eu.org
+      - blirala.eu
+      - lirarice.eu.org
+      - lirarice.ovh
+      - tharyrok.eu
+      - tmin.eu
+
+    catchall:
+      "@web.tharyrok.eu": { mail: "web@tharyrok.eu", domain: "tharyrok.eu" }
+      "@web.assalyzo.eu": { mail: "web@assalyzo.eu", domain: "assalyzo.eu" }
+      "@web.blirala.eu": { mail: "web@blirala.eu", domain: "blirala.eu" }
+
+  roles:
+    - { role: 'mail', when: ansible_hostname == 'mail' }
+    - { role: 'mail-mysql', when: ansible_hostname == 'sql' }

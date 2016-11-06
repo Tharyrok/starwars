@@ -1,0 +1,13 @@
+---
+
+- hosts: mail.r2-d2.tharyrok.eu.org
+
+  pre_tasks:
+    - include_vars: ../secured/password.yml
+  vars:
+
+  roles:
+    - letsencrypt-infra
+    - nginx-infra
+#    - dovecote
+#    - postfix

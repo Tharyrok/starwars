@@ -1,0 +1,14 @@
+---
+
+- hosts: all
+  pre_tasks:
+    - include_vars: ../secured/password.yml
+  vars:
+    DOMAIN: imap.tharyrok.eu.org
+    PROXY_LE: "mail.r2-d2.tharyrok.eu.org"
+
+
+  roles:
+    - { role: 'nginx-apps', when: ansible_hostname == 'web' }
+    - { role: 'nginx-apps', when: ansible_hostname == 'mail' }
+    - { role: 'letsencrypt-apps', when: ansible_hostname == 'mail' }

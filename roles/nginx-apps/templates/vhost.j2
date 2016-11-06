@@ -3,54 +3,47 @@ server {
 	listen [::]:80;
 	server_name {{ DOMAIN }};
 
-	{% if SSL_UNIQ %}
+	{% if SSL_UNIQ is defined%}
         location / {
                 return 301 https://$server_name$request_uri;
         }
 	{% endif %}
 
-	{% if PROXY %}
-		{% if ansible_hostname | match('web') %}
-			location / {
-				proxy_pass        http://{{ PROXY_IP }};
-				proxy_set_header Host $host;
-				proxy_set_header X-Real-IP $remote_addr;
-				proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-				proxy_set_header X-Forwarded-Proto $scheme;
-			}
-
-			location ^~ /.well-known/acme-challenge/ {
-				allow all;
-				alias /home/letsencrypt/webroot/;
-				try_files $uri =404;
-			}
-		{% else %}
-			{% if LE and not ansible_hostname | match('web') %}
-				location ^~ /.well-known/acme-challenge/ {
-					allow all;
-					alias /home/letsencrypt/webroot/;
-					try_files $uri =404;
-				}
-			{% endif %}
-		{% endif %}
-	{% else %}
-		{% if LE %}
-			location ^~ /.well-known/acme-challenge/ {
-				allow all;
-				alias /home/letsencrypt/webroot/;
-				try_files $uri =404;
-			}
-		{% endif %}
+	{% if PROXY_LE is defined and not ansible_fqdn | match(PROXY_LE) %}
+		location / {
+			proxy_pass        http://{{ PROXY_LE }};
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Forwarded-Proto $scheme;
+		}	
 	{% endif %}
 
-	{% if not SSL_UNIQ and not PROXY and not PROXY_SSL %}
+	{% if LE  is defined %}
+		location ^~ /.well-known/acme-challenge/ {
+			allow all;
+			alias /home/letsencrypt/webroot/;
+			try_files $uri =404;
+		}
+	{% endif %}
+
+	{% if PROXY_LE  is defined and ansible_fqdn | match(PROXY_LE) %}
+		location ^~ /.well-known/acme-challenge/ {
+			allow all;
+			alias /home/letsencrypt/webroot/;
+			try_files $uri =404;
+		}
+	{% endif %}
+
+
+	{% if not SSL_UNIQ is defined and not PROXY_PORT is defined  and not PROXY_LE  is defined %}
 		{% include "commun.j2" %}
 	{% endif %}
 
 }
 
 
-{% if SSL %}
+{% if SSL  is defined %}
 server {
 	listen 443 ssl http2;
 	listen [::]:443 ssl http2;
@@ -58,9 +51,9 @@ server {
 
 	ssl_certificate /home/letsencrypt/bundles/{{ DOMAIN }}.pem;
 	ssl_certificate_key /home/letsencrypt/ssl/{{ DOMAIN }}/{{ DOMAIN }}.key;
-	{% if PROXY_SSL %}
+	{% if PROXY_PORT is defined %}
 		location / {
-			proxy_pass        http://{{ PROXY_IP }};
+			proxy_pass        http://127.0.0.1:{{ PROXY_PORT }};
 			proxy_set_header Host $host;
 			proxy_set_header X-Real-IP $remote_addr;
 			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
