@@ -1,3 +1,5 @@
 r2-d2.tharyrok.eu.org ansible_become=yes ansible_host=62.210.100.21
 sql.r2-d2.tharyrok.eu.org ansible_become=yes
 web.r2-d2.tharyrok.eu.org ansible_become=yes
+dns.r2-d2.tharyrok.eu.org ansible_become=yes
+mail.r2-d2.tharyrok.eu.org ansible_become=yes
