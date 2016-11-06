@@ -42,30 +42,25 @@
 -A FORWARD -j REJECT --reject-with icmp6-port-unreachable
 {% if 'TCP' in iptables %}
 {% for d in iptables['TCP'] %}
--A TCP -p tcp -m tcp --dport {{ d }} -j ACCEPT
+-A TCP -p tcp -m tcp {% if 'ip6_src' in d %}-s {{ d.ip6_src }}{% endif %} {% if 'ip6_dst' in d %}-d {{ d.ip6_dst }}{% endif %} {% if 'iface_src' in d %}-i {{ d.iface_src }}{% endif %} {% if 'iface_dst' in d %}-o {{ d.iface_dst }}{% endif %} {% if 'port_src' in d %}--sport {{ d.port_src }}{% endif %} {% if 'port_dst' in d %}--dport {{ d.port_dst }}{% endif %} -j ACCEPT
 {% endfor %}
 {% endif %}
+
 {% if 'UDP' in iptables %}
 {% for d in iptables['UDP'] %}
--A UDP -p udp -m udp --dport {{ d }} -j ACCEPT
+-A UDP -p udp -m udp {% if 'ip6_src' in d %}-s {{ d.ip6_src }}{% endif %} {% if 'ip6_dst' in d %}-d {{ d.ip6_dst }}{% endif %} {% if 'iface_src' in d %}-i {{ d.iface_src }}{% endif %} {% if 'iface_dst' in d %}-o {{ d.iface_dst }}{% endif %} {% if 'port_src' in d %}--sport {{ d.port_src }}{% endif %} {% if 'port_dst' in d %}--dport {{ d.port_dst }}{% endif %} -j ACCEPT
 {% endfor %}
 {% endif %}
-{% if 'TCP6-FORWARD' in iptables %}
-{% for d in iptables['TCP6-FORWARD'] %}
-{% for ip in d %}
-{% for port in d[ip] %}
--A TCP-FORWARD -p tcp -m tcp --dport {{ port }} -d {{ ip }} -j ACCEPT
-{% endfor %}
-{% endfor %}
+
+{% if 'TCP_FORWARD' in iptables %}
+{% for d in iptables['TCP_FORWARD'] %}
+-A TCP-FORWARD -p tcp -m tcp {% if 'ip6_src' in d %}-s {{ d.ip6_src }}{% endif %} {% if 'ip6_dst' in d %}-d {{ d.ip6_dst }}{% endif %} {% if 'iface_src' in d %}-i {{ d.iface_src }}{% endif %} {% if 'iface_dst' in d %}-o {{ d.iface_dst }}{% endif %} {% if 'port_src' in d %}--sport {{ d.port_src }}{% endif %} {% if 'port_dst' in d %}--dport {{ d.port_dst }}{% endif %} -j ACCEPT
 {% endfor %}
 {% endif %}
-{% if 'UDP6-FORWARD' in iptables %}
-{% for d in iptables['UDP6-FORWARD'] %}
-{% for ip in d %}
-{% for port in d[ip] %}
--A UDP-FORWARD -p udp -m udp --dport {{ port }} -d {{ ip }} -j ACCEPT
-{% endfor %}
-{% endfor %}
+
+{% if 'UDP_FORWARD' in iptables %}
+{% for d in iptables['UDP_FORWARD'] %}
+-A UDP-FORWARD -p udp -m udp {% if 'ip6_src' in d %}-s {{ d.ip6_src }}{% endif %} {% if 'ip6_dst' in d %}-d {{ d.ip6_dst }}{% endif %} {% if 'iface_src' in d %}-i {{ d.iface_src }}{% endif %} {% if 'iface_dst' in d %}-o {{ d.iface_dst }}{% endif %} {% if 'port_src' in d %}--sport {{ d.port_src }}{% endif %} {% if 'port_dst' in d %}--dport {{ d.port_dst }}{% endif %} -j ACCEPT
 {% endfor %}
 {% endif %}
 COMMIT

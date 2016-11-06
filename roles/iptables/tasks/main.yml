@@ -1,11 +1,11 @@
 ---
 - name: Activé ipv4 forward
   sysctl: name="net.ipv4.ip_forward" value=1 sysctl_set=yes state=present reload=yes
-  when: "'IPV4-FORWARD' in iptables"
+  when: "'IPV4_FORWARD' in iptables"
 
 - name: Activé ipv6 forward
   sysctl: name="net.ipv6.conf.all.forwarding" value=1 sysctl_set=yes state=present reload=yes
-  when: "'IPV6-FORWARD' in iptables"
+  when: "'IPV6_FORWARD' in iptables"
 
 - name: Config iptable ipv4
   template: src=ipv4.j2 dest=/etc/iptables/rules.v4 owner=root group=root mode="u+rw,g+r,o+r"

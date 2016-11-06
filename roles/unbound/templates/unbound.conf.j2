@@ -39,9 +39,9 @@ server:
 	do-not-query-localhost: no
 	val-clean-additional: yes
 
-{% for unbound_k, unbound_v in unbounds.iteritems() %}
+{% for unbound_k, unbound_v in unbounds.items() %}
 local-zone: "{{ unbound_k }}." transparent
-{% for key ,value in unbound_v.iteritems() %}
+{% for key ,value in unbound_v.items() %}
 	local-data: "{{ key }}.  IN A {{ value }}"
 	local-data-ptr: "{{ value }}  {{ key }}"
 {% endfor %}
