@@ -19,8 +19,3 @@
 
 - name: Activer le service nsd au démérage
   service: name=nsd state=started enabled=yes
-
-- name: Copie des fichier de configuration monit
-  copy: src=nsd dest=/etc/monit.d/nsd owner=root group=root mode="u+r,g-rwx,o-rwx"
-  notify:
-    - restart monit
