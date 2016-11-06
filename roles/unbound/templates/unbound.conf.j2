@@ -1,28 +1,17 @@
 server:
 	auto-trust-anchor-file: "/var/lib/unbound/root.key"
 	verbosity: 1
-	{% if ansible_fqdn in 'r2-d2.tharyrok.eu.org' %}
-	interface: 192.168.70.1
-	{% elif ansible_fqdn in 'azi-3.tharyrok.eu.org' %}
-	interface: 192.168.12.254
-	{% else %}
-	interface: 127.0.0.1
-	{% endif %}
+	{% for d in unbound_conf['interface'] %}
+	interface: {{ d }}
+	{% endfor %}
 	port: 53
 	do-ip4: yes
 	do-ip6: yes
 	do-udp: yes
 	do-tcp: yes
-	access-control: ::1 allow_snoop
-	{% if ansible_fqdn in 'r2-d2.tharyrok.eu.org' %}
-	access-control: 127.0.0.1 allow_snoop
-	access-control: 192.168.70.0/24 allow_snoop
-	{% elif ansible_fqdn in 'azi-3.tharyrok.eu.org' %}
-	access-control: 127.0.0.1 allow_snoop
-	access-control: 192.168.12.0/24 allow_snoop
-	{% else %}
-	access-control: 127.0.0.1 allow_snoop
-	{% endif %}
+	{% for d in unbound_conf['access'] %}
+	access-control: {{ d }} allow_snoop
+	{% endfor %}
 	root-hints: "/var/lib/unbound/root.hints"
 	hide-identity: yes
 	hide-version: yes

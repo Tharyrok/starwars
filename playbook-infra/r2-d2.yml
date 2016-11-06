@@ -5,6 +5,15 @@
   pre_tasks:
     - include_vars: ../secured/password.yml
   vars:
+    unbound_conf:
+      interface:
+        - "192.168.70.1"
+        - "127.0.0.1"
+        - "::1"
+      access:
+        - "127.0.0.1"
+        - "::1"
+        - "192.168.70.0/24"
     iptables:
       IPV4_FORWARD: true
       IP4_WAN: "62.210.100.21"
