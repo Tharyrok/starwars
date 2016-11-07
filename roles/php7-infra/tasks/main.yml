@@ -42,8 +42,5 @@
 - name: php cgi config
   replace: dest=/etc/php/7.0/fpm/php.ini regexp='^cgi.fix_pathinfo=1$' replace='cgi.fix_pathinfo=0"' backup=no
 
-- name: Supprimer le default pool
-  file: path=/etc/php/7.0/fpm/pool.d/www.conf state=absent
-
 - name: Activer les service au démérage (fpm)
   service: name=php7.0-fpm enabled=yes

@@ -11,3 +11,4 @@
     - nginx-infra
     - php5-infra
     - php7-infra
+    - nodejs
