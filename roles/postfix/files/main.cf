@@ -70,10 +70,7 @@ virtual_alias_maps =
     mysql:/etc/postfix/mysql-virtual-alias-maps.cf,mysql:/etc/postfix/mysql-virtual-email2email.cf
 virtual_mailbox_domains = mysql:/etc/postfix/mysql-virtual-mailbox-domains.cf
 virtual_mailbox_maps = mysql:/etc/postfix/mysql-virtual-mailbox-maps.cf
-mlmmj_destination_recipient_limit = 1
-milter_default_action = accept
-smtpd_milters = unix:/milter-greylist/milter-greylist.sock, unix:/clamav/clamav-milter.ctl, unix:/spamass/spamass.sock, inet:localhost:12301
-non_smtpd_milters = inet:localhost:12301
-milter_connect_macros = i b j _ {daemon_name} {if_name} {client_addr}
-milter_protocol = 2
+smtpd_milters = inet:localhost:11000
+milter_protocol = 6
+milter_mail_macros = i {mail_addr} {client_addr} {client_name} {auth_authen}
 milter_default_action = accept

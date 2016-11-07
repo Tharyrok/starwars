@@ -9,5 +9,5 @@
   roles:
     - letsencrypt-infra
     - nginx-infra
-#    - dovecote
-#    - postfix
+    - dovecote
+    - postfix

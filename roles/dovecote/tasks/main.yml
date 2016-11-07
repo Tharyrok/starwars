@@ -9,6 +9,7 @@
     - dovecot-mysql
     - dovecot-sieve
     - dovecot-managesieved
+    - dovecot-antispam
 
 - name: Copie des fichier de configuration dovecot
   copy: src={{ item }} dest=/etc/dovecot/conf.d/{{ item }} owner=root group=root mode="u+r,g-rwx,o-rwx"
@@ -43,8 +44,3 @@
 
 - name: Activer dovecot au démérage
   service: name=dovecot state=started enabled=yes
-
-- name: Copie des fichier de configuration dovecot
-  copy: src=dovecot dest=/etc/monit.d/dovecot owner=root group=root mode="u+r,g-rwx,o-rwx"
-  notify:
-    - restart monit

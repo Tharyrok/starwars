@@ -137,6 +137,3 @@ bsmtp     unix  -       n       n       -       -       pipe
   flags=Fq. user=bsmtp argv=/usr/lib/bsmtp/bsmtp -t$nexthop -f$sender $recipient
 scalemail-backend unix	-	n	n	-	2	pipe
   flags=R user=scalemail argv=/usr/lib/scalemail/bin/scalemail-store ${nexthop} ${user} ${extension}
-# mlmmj mailing lists
-mlmmj   unix  -       n       n       -       -       pipe
-  flags=ORhu user=mailing argv=/usr/bin/mlmmj-receive -F -L /home/mailing/list/$nexthop

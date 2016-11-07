@@ -14,7 +14,7 @@ WHERE NOT EXISTS (
 ) LIMIT 1;
 {% endfor %}
 
-{% for k,v in mail_user.iteritems() %}
+{% for k,v in mail_user.items() %}
 {% set domain = k.split('@')[1] %}
 INSERT INTO `mailserver`.`virtual_users`(`domain_id`, `password` , `email`)
 SELECT * FROM (SELECT (SELECT `id` FROM `mailserver`.`virtual_domains` WHERE name='{{ domain }}' LIMIT 1 ), 'password', '{{ k }}') AS tmp
@@ -24,7 +24,7 @@ WHERE NOT EXISTS (
 UPDATE virtual_users SET password=ENCRYPT('{{ v }}', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))) WHERE email='{{ k }}' AND password='password';
 {% endfor %}
 
-{% for k,v in catchall.iteritems() %}
+{% for k,v in catchall.items() %}
 {% set domain = k.split('@')[1] %}
 
 INSERT INTO `mailserver`.`virtual_aliases`(`domain_id`, `source` , `destination`)
