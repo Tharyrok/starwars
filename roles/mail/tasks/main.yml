@@ -3,3 +3,7 @@
 - name: Créer repertoire domain
   file: path=/var/mail/vhosts/{{ item }} state=directory owner=vmail group=vmail mode="u+rwX,g+rwX,o+r" recurse=yes
   with_items: "{{ domain }}"
+
+- name: copie fichier domain dkim
+  copy: src=../secured/dkim/{{ item }}.mail.key  dest=/etc/dkim/{{ item }}.mail.key owner=_rmilter group=_rmilter mode="u+rw,g-rw,o-rw"
+  with_items: "{{ domain }}"
