@@ -10,3 +10,4 @@
   roles:
     - mariadb
     - postfix-mysql
+    - proftpd-mysql

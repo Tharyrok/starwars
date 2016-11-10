@@ -1,0 +1,17 @@
+        location ~ \.php(/|$) {
+            # Unmodified fastcgi_params from nginx distribution.
+            include fastcgi_params;
+            # Necessary for php.
+            fastcgi_split_path_info ^(.+\.php)(/.*)$;
+            fastcgi_param PATH_INFO $fastcgi_path_info;
+            fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+            fastcgi_param DOCUMENT_ROOT $realpath_root;
+            try_files $uri $uri/ /app.php$is_args$args;
+		fastcgi_pass unix:/var/run/php/forum-imotep-gaming-fr.sock;
+}
+
+rewrite ^/(.*)-f([0-9]*)/(.*)-t([0-9]*)-s([0-9]*).html /viewtopic.php?f=$2&t=$4&start=$5&$query_string last;
+rewrite ^/(.*)-f([0-9]*)/(.*)-t([0-9]*).html /viewtopic.php?f=$2&t=$4&$query_string last;
+rewrite ^/(.*)-f([0-9]*)/index-s([0-9]*).html /viewforum.php?f=$2&start=$3&$query_string last;
+rewrite ^/(.*)-f([0-9]*)/ /viewforum.php?f=$2&$query_string last;
+rewrite ^/(.*)-f([0-9]*) /viewforum.php?f=$2&$query_string last;

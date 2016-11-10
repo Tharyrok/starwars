@@ -2,7 +2,7 @@
 # confgig general de tout les hosts
 
 - name: Création fichier de configuration nginx vhost
-  template: src=vhost.j2 dest="/etc/nginx/sites-available/{{ DOMAIN | replace(".", "-") }}" owner=root group=root mode="u+rw,g+r,o+r"
+  template: src={{ NGINX_MODE }}.j2 dest="/etc/nginx/sites-available/{{ DOMAIN | replace(".", "-") }}" owner=root group=root mode="u+rw,g+r,o+r"
   notify: restart nginx
 
 - name: Lien symbolique vhost

@@ -1,0 +1,21 @@
+mc.imotep-gaming.fr.				86400	SOA		ns-charlie.tharyrok.eu.org. postmaster.tharyrok.eu.org. (
+									2016111001  ; serial YYYYMMDDnn
+									3600         ; refresh (   1 hours)
+									7200         ; retry   (   2 hours)
+									1209600      ; expire  (  14 days )
+									3600 )       ; minimum (   1 hours
+
+mc.imotep-gaming.fr.			84600	NS		ns-bravo.tharyrok.eu.org.
+mc.imotep-gaming.fr.			84600	NS		ns-charlie.tharyrok.eu.org.
+mc.imotep-gaming.fr.			84600	NS		ns-delta.tharyrok.eu.org.
+mc.imotep-gaming.fr.			84600	NS		ns-echo.tharyrok.eu.org.
+mc.imotep-gaming.fr.			84600	NS		ns-foxtrot.tharyrok.eu.org.
+mc.imotep-gaming.fr.			84600	NS		ns-golf.tharyrok.eu.org.
+mc.imotep-gaming.fr.			84600	NS		ns-hotel.tharyrok.eu.org.
+mc.imotep-gaming.fr.			84600	NS		ns-india.tharyrok.eu.org.
+
+mc.imotep-gaming.fr.			84600	A		62.210.100.21
+vanilla.mc.imotep-gaming.fr.	84600	A		62.210.100.21
+mod.mc.imotep-gaming.fr.		84600	A		163.172.13.139
+launcher.mc.imotep-gaming.fr.	84600	A		62.210.100.21
+

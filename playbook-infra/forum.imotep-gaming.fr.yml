@@ -10,16 +10,13 @@
     SSL: true
     SSL_UNIQ: true
     TECHNO: php
-    PROXY: false
-    PROXY_SSL: false
-    PROXY_IP: false
-
 
   roles:
     - { role: 'user', when: ansible_hostname == 'web' }
     - { role: 'letsencrypt-apps', when: ansible_hostname == 'web' }
     - { role: 'nginx-apps', when: ansible_hostname == 'web' }
     - { role: 'php5-apps', when: ansible_hostname == 'web' }
+    - { role: 'proftpd-apps', when: ansible_hostname == 'sql' }
 
   tasks:
     - name: create database imotep

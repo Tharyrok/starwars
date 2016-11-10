@@ -1,0 +1,34 @@
+---
+
+- hosts: c-3po.tharyrok.eu.org
+
+  pre_tasks:
+    - include_vars: ../secured/password.yml
+  vars:
+    unbound_conf:
+      interface:
+        - "127.0.0.1"
+        - "::1"
+      access:
+        - "127.0.0.1"
+        - "::1"
+    iptables:
+      TCP:
+        - { port_dst: 22 }
+        - { port_dst: 30033 }
+        - { port_dst: 10011 }
+        - { port_dst: 41144 }
+        - { port_dst: 655 }
+
+      UDP:
+        - { port_dst: 655 }
+        - { port_dst: 2011 }
+        - { port_dst: 9987 }
+
+  roles:
+    - iptables
+    - unbound
+    - letsencrypt-infra
+    - nginx-infra
+    - php5-infra
+    - php7-infra

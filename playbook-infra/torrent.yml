@@ -1,6 +1,6 @@
 ---
 
-- hosts: web.r2-d2.tharyrok.eu.org
+- hosts: torrent.r2-d2.tharyrok.eu.org
 
   pre_tasks:
     - include_vars: ../secured/password.yml

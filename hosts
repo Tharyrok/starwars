@@ -1,5 +1,10 @@
+c-3po.tharyrok.eu.org ansible_become=yes ansible_host=149.202.181.125
 r2-d2.tharyrok.eu.org ansible_become=yes ansible_host=62.210.100.21
+flo.tharyrok.eu.org ansible_become=yes ansible_host=163.172.13.139
 sql.r2-d2.tharyrok.eu.org ansible_become=yes
 web.r2-d2.tharyrok.eu.org ansible_become=yes
 dns.r2-d2.tharyrok.eu.org ansible_become=yes
 mail.r2-d2.tharyrok.eu.org ansible_become=yes
+minecraft.r2-d2.tharyrok.eu.org ansible_become=yes
+plex.r2-d2.tharyrok.eu.org ansible_become=yes
+torrent.r2-d2.tharyrok.eu.org ansible_become=yes

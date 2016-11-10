@@ -6,13 +6,8 @@
   vars:
     DOMAIN: imotep-gaming.fr
     DIR: /var/www/imotep-gaming.fr/
-    LE: true
-    SSL: true
-    SSL_UNIQ: true
+    NGINX_MODE: "vhost-ssl"
     TECHNO: php
-    PROXY: false
-    PROXY_SSL: false
-    PROXY_IP: false
 
 
   roles:
@@ -20,3 +15,4 @@
     - { role: 'letsencrypt-apps', when: ansible_hostname == 'web' }
     - { role: 'nginx-apps', when: ansible_hostname == 'web' }
     - { role: 'php5-apps', when: ansible_hostname == 'web' }
+    - { role: 'proftpd-apps', when: ansible_hostname == 'sql' }

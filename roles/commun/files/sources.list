@@ -13,5 +13,5 @@ deb-src http://security.debian.org/ jessie/updates main contrib non-free
 deb http://packages.dotdeb.org jessie all
 deb-src http://packages.dotdeb.org jessie all
 
-deb https://deb.nodesource.com/node_4.x jessie main
-deb-src https://deb.nodesource.com/node_4.x jessie main
+deb https://deb.nodesource.com/node_6.x jessie main
+deb-src https://deb.nodesource.com/node_6.x jessie main

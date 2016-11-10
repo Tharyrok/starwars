@@ -1,5 +1,5 @@
 tharyrok.eu.org.			86400	SOA		ns-charlie.tharyrok.eu.org. postmaster.tharyrok.eu.org. (
-								2016101001   ; serial YYYYMMDDnn
+								2016111002   ; serial YYYYMMDDnn
 								3600         ; refresh (   1 hours)
 								7200         ; retry   (   2 hours)
 								1209600      ; expire  (  14 days )
@@ -48,6 +48,7 @@ oracle.tharyrok.eu.org.		84600	AAAA	2001:913:1fff:ffff::b:d031
 c-3po.tharyrok.eu.org.		84600	A		149.202.181.125
 r2-d2.tharyrok.eu.org.		84600	A		62.210.100.21
 azi-3.tharyrok.eu.org.		84600	A		80.67.181.138
+flo.tharyrok.eu.org.		84600	A		163.172.13.139
 
 www.tharyrok.eu.org.		3600	A			62.210.100.21
 git.tharyrok.eu.org.		3600	A			62.210.100.21
@@ -57,6 +58,8 @@ mail.tharyrok.eu.org.		3600	A			62.210.100.21
 smtp-back.tharyrok.eu.org.	3600	A			149.202.181.125
 torrent.tharyrok.eu.org.	3600	A			62.210.100.21
 graph.tharyrok.eu.org.		3600	A			149.202.181.125
+monit.tharyrok.eu.org.		3600	A			149.202.181.125
+log.tharyrok.eu.org.		3600	A			149.202.181.125
 script.tharyrok.eu.org.		3600	A			62.210.100.21
 xmpp.tharyrok.eu.org.		3600	A			62.210.100.21
 irc.tharyrok.eu.org.		3600	A			62.210.100.21

@@ -18,6 +18,9 @@ web_id:
   "forum.imotep.dev.tharyrok.eu.org": 6006
   "imotep-gaming.fr": 6007
   "img.imotep-gaming.fr": 6008
+  "torrent.tharyrok.eu.org": 6009
+  "monit.tharyrok.eu.org": 6010
+  "sound.imotep-gaming.fr": 6011
 
 unbounds:
   "tharyrok.eu.org":

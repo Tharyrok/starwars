@@ -8,9 +8,6 @@ server {
 	access_log /var/log/nginx/torrent-access.log;
 	error_log /var/log/nginx/torrent-error.log;
 
-	auth_basic "seedbox";
-	auth_basic_user_file "/etc/nginx/passwd/torrent_passwd";
-
 	location / {
 		try_files $uri $uri/ /index.php;
 	}
