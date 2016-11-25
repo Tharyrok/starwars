@@ -1,13 +1,5 @@
 ---
 # role commun de tout les hosts
 
-- include: repos.yml
-- include: zsh.yml
-- include: users.yml
-- include: openssh.yml
-- include: motd.yml
-- include: local.yml
-- include: tools.yml
-- include: iptables.yml
-- include: supervisor.yml
 
+- include: sensu.yml

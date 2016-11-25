@@ -12,6 +12,9 @@
 - name: Ajout cles nodeJS
   apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key
 
+- name: Ajout cles Sensu
+  apt_key: url=http://repositories.sensuapp.org/apt/pubkey.gpg
+
 - name: Mis à jours des serveurs
   apt: upgrade=safe update_cache=yes
 

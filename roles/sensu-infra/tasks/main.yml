@@ -1,0 +1,4 @@
+---
+
+- name: Création des client
+  copy: src=client.json dest=/etc/sensu/conf.d/client.json owner=root group=root mode="u+rw,g+r,o+r"

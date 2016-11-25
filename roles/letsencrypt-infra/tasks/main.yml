@@ -7,7 +7,7 @@
     - python
 
 - name: Ajout de l'user
-  user: name=letsencrypt shell=/bin/false append=yes state=present uid=999
+  user: name=letsencrypt shell=/bin/false append=yes state=present uid=42420
 
 - name: Créer repertoire letsencrypt
   file: path=/home/letsencrypt/{{ item }} state=directory owner=letsencrypt group=letsencrypt mode="u+rwX,g+rwX,o+r" recurse=yes

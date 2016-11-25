@@ -15,3 +15,5 @@ deb-src http://packages.dotdeb.org jessie all
 
 deb https://deb.nodesource.com/node_6.x jessie main
 deb-src https://deb.nodesource.com/node_6.x jessie main
+
+deb http://repositories.sensuapp.org/apt sensu main

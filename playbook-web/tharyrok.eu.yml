@@ -1,0 +1,32 @@
+---
+
+- hosts: all
+  pre_tasks:
+    - include_vars: ../secured/password.yml
+  vars:
+    DOMAIN: tharyrok.eu
+    DIR: /var/www/tharyrok.eu
+    NGINX_MODE: "vhost-ssl"
+    TECHNO: php
+
+
+  roles:
+    - { role: 'user', when: ansible_hostname == 'web' }
+    - { role: 'letsencrypt-apps', when: ansible_hostname == 'web' }
+    - { role: 'nginx-apps', when: ansible_hostname == 'web' }
+    - { role: 'php7-apps', when: ansible_hostname == 'web' }
+    - { role: 'proftpd-apps', when: ansible_hostname == 'sql' }
+
+  tasks:
+    - name: create database tharyrok
+      mysql_db: name=tharyrok state=present login_user=root login_password={{ MYSQL_ROOT }}
+      when: ansible_hostname == 'sql'
+
+    - name: create user tharyrok mysql for lan
+      mysql_user: name=tharyrok password={{ MYSQL_THARYROK }} priv=tharyrok.*:ALL host={{ item }} state=present login_user=root login_password={{ MYSQL_ROOT }}
+      with_items:
+        - "127.0.0.1"
+        - "localhost"
+        - "192.168.70.%"
+        - "sql.r2-d2.tharyrok.eu.org"
+      when: ansible_hostname == 'sql'

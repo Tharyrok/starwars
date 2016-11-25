@@ -21,13 +21,15 @@ web_id:
   "torrent.tharyrok.eu.org": 6009
   "monit.tharyrok.eu.org": 6010
   "sound.imotep-gaming.fr": 6011
+  "tharyrok.eu": 6012
+  "launcher.mc.imotep-gaming.fr": 6013
 
 unbounds:
   "tharyrok.eu.org":
-    "r2-d2.tharyrok.eu.org": 10.0.50.1
-    "c-3po.tharyrok.eu.org": 10.0.50.5
-    "azi-3.tharyrok.eu.org": 10.0.50.10
-    "2-1b.tharyrok.eu.org": 10.0.50.15
+    "r2-d2.tharyrok.eu.org": 192.168.42.20
+    "c-3po.tharyrok.eu.org": 192.168.42.10
+    "azi-3.tharyrok.eu.org": 192.168.42.5
+    "flo.tharyrok.eu.org": 192.168.42.15
   "r2-d2.tharyrok.eu.org":
     "dns.r2-d2.tharyrok.eu.org": 192.168.70.5
     "mail.r2-d2.tharyrok.eu.org": 192.168.70.10

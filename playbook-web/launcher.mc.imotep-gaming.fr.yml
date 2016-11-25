@@ -1,0 +1,17 @@
+---
+
+- hosts: all
+  pre_tasks:
+    - include_vars: ../secured/password.yml
+  vars:
+    DOMAIN: launcher.mc.imotep-gaming.fr
+    DIR: /var/www/launcher.mc.imotep-gaming.fr/
+    NGINX_MODE: "vhost-ssl"
+    TECHNO: none
+
+
+  roles:
+    - { role: 'user', when: ansible_hostname == 'web' }
+    - { role: 'letsencrypt-apps', when: ansible_hostname == 'web' }
+    - { role: 'nginx-apps', when: ansible_hostname == 'web' }
+    - { role: 'proftpd-apps', when: ansible_hostname == 'sql' }
