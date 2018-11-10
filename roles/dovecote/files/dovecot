@@ -1,7 +1,0 @@
-check process dovecot with pidfile /var/run/dovecot/master.pid
-	group mail
-	start program = "/usr/sbin/service dovecot start"
-	stop program = "/usr/sbin/service dovecot stop"
-	if failed host localhost port 143 type tcp protocol imap then restart
-	if failed host localhost port 993 type tcpssl sslauto protocol imap then restart
-	if 5 restarts within 5 cycles then timeout

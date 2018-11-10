@@ -1,6 +1,0 @@
-check process nsd with pidfile /var/run/nsd/nsd.pid
-  group dns
-  start program = "/etc/init.d/nsd start"
-  stop  program = "/etc/init.d/nsd stop"
-   if failed host 192.168.70.5 port 53 type udp then alert
-   if failed host 192.168.70.5 port 53 type tcp then alert

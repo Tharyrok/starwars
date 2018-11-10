@@ -1,8 +1,0 @@
----
-
-- name: copy fille import database mail
-  template: src=postfix.j2 dest=/tmp/postfix.sql owner=root group=root mode="u+rw,g+r,o+r"
-
-- name: import database mail
-  mysql_db: name=mailserver state=import target=/tmp/postfix.sql name=mailserver login_user=root login_password={{ MYSQL_ROOT }}
-

@@ -1,7 +1,0 @@
----
-
-- name: restart nsd
-  service: name=nsd state=restarted
-
-- name: restart monit
-  service: name=monit state=restarted

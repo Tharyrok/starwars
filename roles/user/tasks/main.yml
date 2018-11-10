@@ -1,8 +1,0 @@
----
-# ajout des users
-
-- name: Créer repertoire www
-  file: path=/var/www state=directory owner=www-data group=www-data mode="u+rwX,g+rwX,o+r"
-
-- name: Ajout des utilisateur
-  user: name={{ DOMAIN | replace(".", "-") }} shell=/bin/false append=yes state=present home=/var/www/{{ DOMAIN }} uid={{ web_id[DOMAIN] }}

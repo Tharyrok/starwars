@@ -1,7 +1,0 @@
----
-
-- name: restart netfilter
-  service: name=netfilter-persistent state=restarted
-
-- name: restart collectd
-  service: name=collectd state=restarted

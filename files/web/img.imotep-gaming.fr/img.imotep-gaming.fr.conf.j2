@@ -1,9 +1,0 @@
-[program:{{ DOMAIN | replace(".", "-") }}]
-command=/usr/bin/nodejs {{ DIR }}/server.js
-directory={{ DIR }}
-autostart=true
-autorestart=true
-stderr_logfile=/var/log/{{ DOMAIN | replace(".", "-") }}.err.log
-stdout_logfile=/var/log/{{ DOMAIN | replace(".", "-") }}.out.log
-user={{ DOMAIN | replace(".", "-") }}
-environment=PORT=3000,CAMO_KEY="{{ IMOTEP_CAMO_HASH }}"

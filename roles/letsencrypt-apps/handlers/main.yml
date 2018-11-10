@@ -1,4 +1,0 @@
----
-
-- name: run certificat
-  raw: /home/letsencrypt/le-cron.sh
