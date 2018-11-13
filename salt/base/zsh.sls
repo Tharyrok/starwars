@@ -58,9 +58,9 @@ safe-rm:
       - pkg: zsh
 {% endif %}
 
-/home/fred/.zshrc:
+/home/tharyrok/.zshrc:
   file.managed:
-    - source: salt://base/files/zsh/zshrc-fred
+    - source: salt://base/files/zsh/zshrc-tharyrok
     - user: fred
     - group: fred
     - mode: 644
