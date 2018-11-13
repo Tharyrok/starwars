@@ -61,8 +61,8 @@ safe-rm:
 /home/tharyrok/.zshrc:
   file.managed:
     - source: salt://base/files/zsh/zshrc-tharyrok
-    - user: fred
-    - group: fred
+    - user: tharyrok
+    - group: tharyrok
     - mode: 644
     - require:
       - pkg: zsh
