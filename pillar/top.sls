@@ -1,3 +1,3 @@
 base:
   '*':
-    - .users.users-admin
+    - .users.admin
