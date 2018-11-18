@@ -1,4 +1,4 @@
-node.packages:
+postgresql.packages:
   pkg.installed:
     - pkgs:
       - postgresql

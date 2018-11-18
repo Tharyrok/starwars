@@ -1,4 +1,4 @@
-node.packages:
+mysql.packages:
   pkg.installed:
     - pkgs:
       - percona-server-server

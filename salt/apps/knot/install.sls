@@ -1,4 +1,4 @@
-node.packages:
+knot.packages:
   pkg.installed:
     - pkgs:
       - knot
