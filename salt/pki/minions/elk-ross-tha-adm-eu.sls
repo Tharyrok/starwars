@@ -10,7 +10,7 @@
     - group: elasticsearch
     - managed_private_key:
         name: /etc/elasticsearch/elk-tha-adm-eu.key
-        bits: 4096
+        bits: 2048
         backup: True
         user: elasticsearch
         group: elasticsearch
