@@ -6,7 +6,7 @@ salt-minion:
 
 /etc/salt/minion.d/signing_policies.conf:
   file.managed:
-    - source: salt://ssl/files/signing_policies.conf
+    - source: salt://pki/files/signing_policies.conf
 
 /etc/pki:
   file.directory
