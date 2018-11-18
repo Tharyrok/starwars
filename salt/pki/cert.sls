@@ -10,8 +10,11 @@
 
 
 /usr/local/share/ca-certificates/elasticsearch-ca.crt:
-  x509.pem_managed:
-    - text: {{ salt['mine.get']('elk.ross.tha-adm.eu', 'x509.get_pem_entries')['elk.ross.tha-adm.eu']['/etc/elasticsearch/root-ca.pem']|replace('\n', '') }}
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 0444
+    - source: salt://pki/files/elasticsearch-ca.crt
   cmd.run:
     - name: update-ca-certificates
     - runas: root
