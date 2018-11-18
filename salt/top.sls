@@ -3,7 +3,7 @@ base:
     - .base
     - .users.users-admin
     - .pki.cert
-    {% if grains['id'] is not 'mail.ross.tha-adm.eu' %}
+    {% if grains['id'] != 'mail.ross.tha-adm.eu' %}
     - .apps.ssmtp
     {% endif %}
 
