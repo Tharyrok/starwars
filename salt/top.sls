@@ -24,6 +24,7 @@ base:
     - .apps.elasticsearch
     - .apps.kibana
     - .apps.logstash
+    - .pki.minions.elk-ross-tha-adm-eu
 
   'dns.ross.tha-adm.eu':
     - .apps.knot
