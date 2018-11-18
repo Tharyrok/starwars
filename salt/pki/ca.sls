@@ -8,20 +8,6 @@ salt-minion:
   file.managed:
     - source: salt://pki/files/signing_policies.conf
 
-/etc/pki:
-  file.directory
-
-/etc/pki/issued_certs:
-  file.directory
-
-/etc/pki/ca.key:
-  x509.private_key_managed:
-    - bits: 8192
-    - cipher: aes_256_cbc
-    - backup: True
-    - require:
-      - file: /etc/pki
-
 /etc/pki/ca.crt:
   x509.certificate_managed:
     - signing_private_key: /etc/pki/ca.key
