@@ -26,7 +26,6 @@ salt-minion:
     - backup: True
     - require:
       - x509: /etc/pki/ca.key
-      - file: /etc/pki
 
 mine.send:
   module.run:
