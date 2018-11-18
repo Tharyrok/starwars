@@ -1,0 +1,13 @@
+{
+    "account": {
+        "email": "contact@tharyrok.xyz"
+    },
+    "certificates": {
+    },
+    "directories": {
+        "http_challenge": "/var/www/acmebot"
+    },
+    "settings": {
+        "reload_zone_command": false
+    }
+}
