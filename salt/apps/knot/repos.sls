@@ -3,5 +3,6 @@ repos-knot:
     - humanname: knot
     - name: deb https://deb.knot-dns.cz/knot-latest/ stretch main
     - file: /etc/apt/sources.list.d/knot.list
-    - key_url: /etc/apt/trusted.gpg.d/knot-latest.gpg
+    - keyid: AC0E47584A7A714D
+    - keyserver: keyserver.ubuntu.com
     - refresh_db: true
