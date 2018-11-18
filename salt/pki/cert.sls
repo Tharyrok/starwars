@@ -17,7 +17,7 @@
     - signing_policy: minion
     - public_key: /etc/pki/{{ grains['id'].replace('.', '-') }}.key
     - CN: {{ grains['id'] }}
-    - days_remaining: 30
+    - days_remaining: 180
     - backup: True
     - managed_private_key:
         name: /etc/pki/{{ grains['id'].replace('.', '-') }}.key
