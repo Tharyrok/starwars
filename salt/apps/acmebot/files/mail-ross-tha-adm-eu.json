@@ -3,6 +3,7 @@
         "email": "contact@tharyrok.xyz"
     },
     "certificates": {
+        "mail.tha-adm.eu": { "services": [ "nginx", "postfix", "dovecot" ] }
     },
     "directories": {
         "http_challenge": "/var/www/acmebot"
