@@ -12,6 +12,7 @@ salt-repos:
     - dist: {{ grains['oscodename']|lower }}
     - file: /etc/apt/sources.list.d/saltstack.list
     - key_url: https://repo.saltstack.com/apt/debian/{{ grains['osmajorrelease'] }}/amd64/latest/SALTSTACK-GPG-KEY.pub
+    - refresh_db: true
 
 elasticsearch-repos:
   pkgrepo.managed:
@@ -20,3 +21,4 @@ elasticsearch-repos:
     - dist: stable
     - file: /etc/apt/sources.list.d/elasticsearch.list
     - key_url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    - refresh_db: true
